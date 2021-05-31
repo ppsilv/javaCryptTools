@@ -94,7 +94,35 @@ public class Util {
         LOGGER.info(result);
         return result;
      }
-    
+    public static String getStringHexSize(String str) {
+    	String result = new String();
+    	try {
+    		result = Util.toHexString(new String( Hex.decodeHex( str.toCharArray() ) )    ) ;
+		} catch (DecoderException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return result;
+    }
+    public static String getStringHexSize(Integer size) {
+    	String result = new String();
+    	String str = Integer.toHexString(size);
+    	//System.out.println("Size......: "+str);
+    	//System.out.println("Size len..: "+str.length());
+    	if ( ( str.length() % 2 ) != 0 ) {
+    		str = "0"+str;
+    	}
+    	try {
+			result = Util.toHexString(new String( Hex.decodeHex( str.toCharArray() ) )    ) ;
+		} catch (DecoderException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	if ( ( result.length() % 2 ) != 0 ) {
+    		result = "0"+result;
+    	}
+    	return result;
+    }
     private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
     public static String bytesToHex(byte[] bytes) {
         var hexChars = new char[bytes.length * 2];

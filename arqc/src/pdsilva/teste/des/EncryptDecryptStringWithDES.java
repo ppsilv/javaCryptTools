@@ -72,15 +72,15 @@ public class EncryptDecryptStringWithDES {
 
 			//byte[] encrypted = encrypt("This is a classified message!");
 			byte[] encrypted = encrypt( abc );
-			System.out.print("Encriptado...:  "); Util.print(encrypted, encrypted.length);
+			System.out.println("Encriptado...:  "); Util.print(encrypted, encrypted.length);
 			byte[] result = Util.copyByteArray(encrypted, 24, 8);
-			System.out.print("Result...:  ");Util.print(result,8);
+			System.out.println("Result...:  ");Util.print(result,8);
 			byte[] blocoTagsLastByte = Hex.decodeHex("6925000004400080".toCharArray());
 			byte[] abcd = Util.xorOperationOnArray(result,blocoTagsLastByte,8);
-			System.out.print("Result xor...:  ");Util.print(abcd,8);
+			System.out.println("Result xor...:  ");Util.print(abcd,8);
 
 			byte[] decrypted = decrypt(encrypted);
-			System.out.print("DEcriptado...:  "); Util.print(decrypted, decrypted.length);
+			System.out.println("\nDEcriptado...:  "); Util.print(decrypted, decrypted.length);
 
 		} catch (NoSuchAlgorithmException e) {
 			System.out.println("No Such Algorithm:" + e.getMessage());
